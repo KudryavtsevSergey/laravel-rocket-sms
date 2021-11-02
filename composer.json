@@ -1,0 +1,28 @@
+{
+  "name": "sun/rocketsms",
+  "description": "Rocket SMS Laravel",
+  "authors": [
+    {
+      "name": "Kudryavtsev Sergey",
+      "email": "invaderman@mail.ru"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Sun\\RocketSms\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sun\\RocketSms\\RocketSmsServiceProvider"
+      ],
+      "aliases": {
+        "RocketSms": "Sun\\RocketSms\\Facade"
+      }
+    }
+  }
+}
