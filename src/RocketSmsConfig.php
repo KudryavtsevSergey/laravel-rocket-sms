@@ -6,11 +6,9 @@ use Illuminate\Contracts\Config\Repository as Config;
 
 class RocketSmsConfig
 {
-    private Config $config;
-
-    public function __construct(Config $config)
-    {
-        $this->config = $config;
+    public function __construct(
+        private Config $config,
+    ) {
     }
 
     public function getGateway(): ?string

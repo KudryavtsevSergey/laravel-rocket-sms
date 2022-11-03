@@ -16,11 +16,9 @@ use Sun\RocketSms\Enum\HttpMethodEnum;
 
 class RocketSmsApiService
 {
-    private RocketSmsHttpClientService $httpClient;
-
-    public function __construct(RocketSmsHttpClientService $httpClient)
-    {
-        $this->httpClient = $httpClient;
+    public function __construct(
+        private RocketSmsHttpClientService $httpClient,
+    ) {
     }
 
     public function send(SendRequestDto $sendRequestDto): SendResponseDto

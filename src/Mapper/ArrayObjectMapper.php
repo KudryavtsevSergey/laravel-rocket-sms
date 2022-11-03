@@ -5,8 +5,8 @@ namespace Sun\RocketSms\Mapper;
 use Sun\RocketSms\Dto\RequestDto\RequestDtoInterface;
 use Sun\RocketSms\Dto\ResponseDto\ResponseDtoInterface;
 use Sun\RocketSms\Exceptions\InternalError;
+use Symfony\Component\PropertyInfo\Extractor\ConstructorExtractor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -22,17 +22,15 @@ class ArrayObjectMapper
 
     public function __construct()
     {
-        $reflectionExtractor = new ReflectionExtractor();
         $phpDocExtractor = new PhpDocExtractor();
-        $propertyTypeExtractor = new PropertyInfoExtractor(
-            [$reflectionExtractor],
-            [$phpDocExtractor, $reflectionExtractor],
-            [$phpDocExtractor],
-            [$reflectionExtractor],
-            [$reflectionExtractor]
+        $extractor = new PropertyInfoExtractor(
+            typeExtractors: [new ConstructorExtractor([$phpDocExtractor]), $phpDocExtractor]
         );
         $normalizers = [
-            new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), null, $propertyTypeExtractor),
+            new ObjectNormalizer(
+                nameConverter: new CamelCaseToSnakeCaseNameConverter(),
+                propertyTypeExtractor: $extractor
+            ),
             new ArrayDenormalizer(),
         ];
         $this->serializer = new Serializer($normalizers);
@@ -52,7 +50,7 @@ class ArrayObjectMapper
      * @param string $type
      * @return ResponseDtoInterface|ResponseDtoInterface[]
      */
-    public function deserialize(array $data, string $type)
+    public function deserialize(array $data, string $type): ResponseDtoInterface|array
     {
         try {
             return $this->serializer->denormalize($data, $type, null, [

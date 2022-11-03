@@ -6,12 +6,12 @@ use Sun\RocketSms\Dto\ResponseDto\Data\Cost;
 
 class SendResponseDto extends StatusResponseDto
 {
-    private Cost $cost;
-
-    public function __construct(int $id, string $status, Cost $cost)
-    {
+    public function __construct(
+        int $id,
+        string $status,
+        private Cost $cost,
+    ) {
         parent::__construct($id, $status);
-        $this->cost = $cost;
     }
 
     public function getCost(): Cost

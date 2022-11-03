@@ -6,14 +6,11 @@ use Sun\RocketSms\Enum\MessageStatusEnum;
 
 class StatusResponseDto implements ResponseDtoInterface
 {
-    private int $id;
-    private string $status;
-
-    public function __construct(int $id, string $status)
-    {
+    public function __construct(
+        private int $id,
+        private string $status,
+    ) {
         MessageStatusEnum::checkAllowedValue($status);
-        $this->id = $id;
-        $this->status = $status;
     }
 
     public function getId(): int

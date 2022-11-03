@@ -32,7 +32,7 @@ class RocketSmsHttpClientService
         string $path,
         string $responseType,
         ?RequestDtoInterface $requestDto = null
-    ): ResponseDtoInterface {
+    ): ResponseDtoInterface|array {
         HttpMethodEnum::checkAllowedValue($method);
         try {
             $data = $requestDto ? $this->arrayObjectMapper->serialize($requestDto) : [];

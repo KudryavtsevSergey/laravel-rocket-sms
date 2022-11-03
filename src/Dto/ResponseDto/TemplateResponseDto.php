@@ -4,13 +4,10 @@ namespace Sun\RocketSms\Dto\ResponseDto;
 
 class TemplateResponseDto implements ResponseDtoInterface
 {
-    private string $tplId;
-    private string $text;
-
-    public function __construct(string $tplId, string $text)
-    {
-        $this->tplId = $tplId;
-        $this->text = $text;
+    public function __construct(
+        private string $tplId,
+        private string $text,
+    ) {
     }
 
     public function getTplId(): string

@@ -4,13 +4,10 @@ namespace Sun\RocketSms\Dto\ResponseDto\Data;
 
 class Cost
 {
-    private int $credits;
-    private float $money;
-
-    public function __construct(int $credits, float $money)
-    {
-        $this->credits = $credits;
-        $this->money = $money;
+    public function __construct(
+        private int $credits,
+        private float $money,
+    ) {
     }
 
     public function getCredits(): int
