@@ -3,7 +3,11 @@
 namespace Sun\RocketSms;
 
 use Illuminate\Support\Facades\Facade as IlluminateFacade;
+use Sun\RocketSms\Service\RocketSmsApiService;
 
+/**
+ * @method static RocketSmsApiService apiService()
+ */
 class Facade extends IlluminateFacade
 {
     public const FACADE_ACCESSOR = 'RocketSms';

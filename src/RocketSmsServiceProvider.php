@@ -6,14 +6,21 @@ use Illuminate\Support\ServiceProvider;
 
 class RocketSmsServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
-        $this->publishes([
-            __DIR__ . '/../config/rocketsms.php' => config_path('rocketsms.php')
-        ], 'rocketsms-config');
+        $this->registerPublishing();
     }
 
-    public function register()
+    protected function registerPublishing(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/rocketsms.php' => config_path('rocketsms.php')
+            ], 'rocketsms-config');
+        }
+    }
+
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/rocketsms.php', 'rocketsms');
 

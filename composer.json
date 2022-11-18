@@ -7,7 +7,8 @@
       "email": "invaderman@mail.ru"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
   },
   "autoload": {
