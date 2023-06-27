@@ -9,8 +9,6 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "require": {
-  },
   "autoload": {
     "psr-4": {
       "Sun\\RocketSms\\": "src/"
@@ -25,5 +23,15 @@
         "RocketSms": "Sun\\RocketSms\\Facade"
       }
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.10",
+    "orchestra/testbench": "^8.5"
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.7",
+    "symfony/serializer": "^6.3",
+    "symfony/property-access": "^6.3",
+    "phpdocumentor/reflection-docblock": "^5.3"
   }
 }

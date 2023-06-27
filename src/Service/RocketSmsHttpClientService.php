@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\RocketSms\Service;
 
 use GuzzleHttp\Client;
@@ -27,6 +29,13 @@ class RocketSmsHttpClientService
         $this->config = $config;
     }
 
+    /**
+     * @param string $method
+     * @param string $path
+     * @param string $responseType
+     * @param RequestDtoInterface|null $requestDto
+     * @return ResponseDtoInterface|ResponseDtoInterface[]
+     */
     public function request(
         string $method,
         string $path,
@@ -54,6 +63,6 @@ class RocketSmsHttpClientService
 
     private function encodeResponse(string $body): array
     {
-        return json_decode($body, true);
+        return json_decode($body, true, flags: JSON_THROW_ON_ERROR);
     }
 }

@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\RocketSms\Service;
 
+use Sun\RocketSms\Constant\ApiConstant;
 use Sun\RocketSms\Dto\RequestDto\AddSenderRequestDto;
 use Sun\RocketSms\Dto\RequestDto\SendRequestDto;
 use Sun\RocketSms\Dto\RequestDto\StatusRequestDto;
@@ -11,7 +14,6 @@ use Sun\RocketSms\Dto\ResponseDto\SendersResponseDto;
 use Sun\RocketSms\Dto\ResponseDto\SendResponseDto;
 use Sun\RocketSms\Dto\ResponseDto\StatusResponseDto;
 use Sun\RocketSms\Dto\ResponseDto\TemplateResponseDto;
-use Sun\RocketSms\Enum\ApiEnum;
 use Sun\RocketSms\Enum\HttpMethodEnum;
 
 class RocketSmsApiService
@@ -26,7 +28,7 @@ class RocketSmsApiService
         /** @var SendResponseDto $responseDto */
         $responseDto = $this->httpClient->request(
             HttpMethodEnum::POST,
-            ApiEnum::SEND,
+            ApiConstant::SEND,
             SendResponseDto::class,
             $sendRequestDto
         );
@@ -38,7 +40,7 @@ class RocketSmsApiService
         /** @var StatusResponseDto $responseDto */
         $responseDto = $this->httpClient->request(
             HttpMethodEnum::GET,
-            ApiEnum::STATUS,
+            ApiConstant::STATUS,
             StatusResponseDto::class,
             $statusRequestDto
         );
@@ -50,7 +52,7 @@ class RocketSmsApiService
         /** @var BalanceResponseDto $responseDto */
         $responseDto = $this->httpClient->request(
             HttpMethodEnum::GET,
-            ApiEnum::BALANCE,
+            ApiConstant::BALANCE,
             BalanceResponseDto::class
         );
         return $responseDto;
@@ -64,7 +66,7 @@ class RocketSmsApiService
         /** @var SendersResponseDto[] $responseDto */
         $responseDto = $this->httpClient->request(
             HttpMethodEnum::GET,
-            ApiEnum::SENDERS,
+            ApiConstant::SENDERS,
             SendersResponseDto::class . '[]'
         );
         return $responseDto;
@@ -75,7 +77,7 @@ class RocketSmsApiService
         /** @var AddSenderResponseDto $responseDto */
         $responseDto = $this->httpClient->request(
             HttpMethodEnum::POST,
-            ApiEnum::ADD_SENDERS,
+            ApiConstant::ADD_SENDERS,
             AddSenderResponseDto::class,
             $addSenderRequestDto
         );
@@ -90,8 +92,8 @@ class RocketSmsApiService
         /** @var TemplateResponseDto[] $responseDto */
         $responseDto = $this->httpClient->request(
             HttpMethodEnum::GET,
-            ApiEnum::TEMPLATES,
-            TemplateResponseDto::class
+            ApiConstant::TEMPLATES,
+            TemplateResponseDto::class . '[]'
         );
         return $responseDto;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\RocketSms\Mapper;
 
 use Sun\RocketSms\Dto\RequestDto\RequestDtoInterface;
@@ -39,7 +41,11 @@ class ArrayObjectMapper
     public function serialize(RequestDtoInterface $model): array
     {
         try {
-            return $this->serializer->normalize($model);
+            $data = $this->serializer->normalize($model);
+            if (!is_array($data)) {
+                throw new InternalError('Model was not normalized');
+            }
+            return $data;
         } catch (ExceptionInterface $e) {
             throw new InternalError('Error normalize model to array', $e);
         }
