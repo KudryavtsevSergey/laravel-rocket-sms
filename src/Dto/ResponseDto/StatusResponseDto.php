@@ -9,8 +9,8 @@ use Sun\RocketSms\Enum\MessageStatusEnum;
 class StatusResponseDto implements ResponseDtoInterface
 {
     public function __construct(
-        private int $id,
-        private string $status,
+        private readonly int $id,
+        private readonly string $status,
     ) {
         MessageStatusEnum::checkAllowedValue($status);
     }

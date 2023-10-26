@@ -7,11 +7,11 @@ namespace Sun\RocketSms\Dto\RequestDto;
 class SendRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private string $phone,
-        private string $text,
-        private ?string $sender = null,
-        private ?int $timestamp = null,
-        private ?bool $priority = null,
+        private readonly string $phone,
+        private readonly string $text,
+        private readonly ?string $sender = null,
+        private readonly ?int $timestamp = null,
+        private readonly ?bool $priority = null,
     ) {
     }
 

@@ -7,10 +7,10 @@ namespace Sun\RocketSms\Dto\ResponseDto;
 class SendersResponseDto implements ResponseDtoInterface
 {
     public function __construct(
-        private string $sender,
-        private bool $verified,
-        private bool $checked,
-        private bool $registered,
+        private readonly string $sender,
+        private readonly bool $verified,
+        private readonly bool $checked,
+        private readonly bool $registered,
     ) {
     }
 

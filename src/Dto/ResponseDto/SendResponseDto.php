@@ -11,7 +11,7 @@ class SendResponseDto extends StatusResponseDto
     public function __construct(
         int $id,
         string $status,
-        private Cost $cost,
+        private readonly Cost $cost,
     ) {
         parent::__construct($id, $status);
     }

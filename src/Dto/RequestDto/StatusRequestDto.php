@@ -7,7 +7,7 @@ namespace Sun\RocketSms\Dto\RequestDto;
 class StatusRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private int $id,
+        private readonly int $id,
     ) {
     }
 

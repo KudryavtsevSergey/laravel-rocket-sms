@@ -7,7 +7,7 @@ namespace Sun\RocketSms\Dto\ResponseDto;
 class AddSenderResponseDto implements ResponseDtoInterface
 {
     public function __construct(
-        private string $status,
+        private readonly string $status,
     ) {
     }
 

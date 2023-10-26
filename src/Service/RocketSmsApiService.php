@@ -19,7 +19,7 @@ use Sun\RocketSms\Enum\HttpMethodEnum;
 class RocketSmsApiService
 {
     public function __construct(
-        private RocketSmsHttpClientService $httpClient,
+        private readonly RocketSmsHttpClientService $httpClient,
     ) {
     }
 

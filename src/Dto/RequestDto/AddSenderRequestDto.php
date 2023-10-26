@@ -7,7 +7,7 @@ namespace Sun\RocketSms\Dto\RequestDto;
 class AddSenderRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private string $sender,
+        private readonly string $sender,
     ) {
     }
 

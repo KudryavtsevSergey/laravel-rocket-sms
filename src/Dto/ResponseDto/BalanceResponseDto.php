@@ -7,8 +7,8 @@ namespace Sun\RocketSms\Dto\ResponseDto;
 class BalanceResponseDto implements ResponseDtoInterface
 {
     public function __construct(
-        private int $credits,
-        private float $balance,
+        private readonly int $credits,
+        private readonly float $balance,
     ) {
     }
 
